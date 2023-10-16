@@ -45,15 +45,32 @@
 // document.write("<br>");
 // document.write(!(x==5));
 
-// let p = document.querySelector("P")
-// let button = document.querySelector("button")
-// let input = document.querySelector("input")
-// button.addEventListener('click', function() {
-//     let isi = input.value
-//     console.log(isi)
-//     p.innerHTML = isi
-// })
+let p = document.querySelector("P");
+let button = document.querySelector("button");
+let input = document.querySelector("input");
 
+button.addEventListener('click', function() {
+    let isi = input.value;  
+        if (isi.trim() !== "") {
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+
+    let span = document.createElement("span");
+        span.textContent = isi;
+
+    let divContainer = document.createElement("div");
+        divContainer.appendChild(checkbox);
+        divContainer.appendChild(span);
+
+        p.appendChild(divContainer);
+
+        console.log(isi);
+
+        input.value = "";
+
+    }
+
+})
 
 
 
