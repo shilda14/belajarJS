@@ -49,28 +49,41 @@ let p = document.querySelector("P");
 let button = document.querySelector("button");
 let input = document.querySelector("input");
 
-button.addEventListener('click', function() {
-    let isi = input.value;  
-        if (isi.trim() !== "") {
-        let checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
+button.addEventListener('click', function () {
+    let isi = input.value;
+    console.log(isi);
 
-    let span = document.createElement("span");
-        span.textContent = isi;
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
 
-    let divContainer = document.createElement("div");
-        divContainer.appendChild(checkbox);
-        divContainer.appendChild(span);
+    let label = document.createElement("label");
+    label.appendChild(checkbox);
+    label.appendChild(document.createTextNode(isi));
 
-        p.appendChild(divContainer);
+    let deleteButton = document.createElement("button");
+    deleteButton.style.marginLeft = "200px";
+    deleteButton.textContent = "X";
+    label.appendChild(deleteButton);
 
-        console.log(isi);
+    p.appendChild(label);
+    p.appendChild(document.createElement("br"));
+    p.appendChild(document.createElement("br"));
 
-        input.value = "";
+    checkbox.addEventListener('change', function () {
+        if (checkbox.checked) {
+            label.style.textDecoration = 'line-through'; 
+        } else {
+            label.style.textDecoration = 'none'; 
+        }
+    });
 
-    }
+    deleteButton.addEventListener('click', function () {
+        p.removeChild(label);
+    });
 
-})
+    input.value = "";
+
+});
 
 
 
